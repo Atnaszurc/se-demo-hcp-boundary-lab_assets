@@ -23,7 +23,7 @@ module "http-sec-group" {
   vpc_id      = data.terraform_remote_state.boundary_demo_init.outputs.vpc_id
   ingress_with_source_security_group_id = [
     {
-      rule                     = "http-http"
+      rule                     = "http-80-tcp"
       source_security_group_id = module.worker-sec-group.security_group_id
     },
     {
