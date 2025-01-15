@@ -507,7 +507,7 @@ resource "boundary_target" "it-http-target" {
   egress_worker_filter = "\"${var.region}\" in \"/tags/region\""
 }
 
-resource "boundary_alias_target" "it-rdp-target-alias" {
+resource "boundary_alias_target" "it-http-target-alias" {
   name           = "it-http"
   description    = "The alias for the IT HTTP target"
   scope_id       = "global"
