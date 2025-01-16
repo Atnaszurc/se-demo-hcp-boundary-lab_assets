@@ -498,13 +498,10 @@ resource "boundary_target" "it-http-target" {
   description              = "Connect to the HTTP target"
   scope_id                 = boundary_scope.it_aws_project.id
   session_connection_limit = -1
-  default_port             = 80
+  default_port             = 443
   default_client_port      = 54389
-
-  host_source_ids = [
-    boundary_host_set_plugin.it_set.id
-  ]
-  egress_worker_filter = "\"${var.region}\" in \"/tags/region\""
+  address                  = aws_instance.http-target.private_ip
+  egress_worker_filter     = "\"${var.region}\" in \"/tags/region\""
 }
 
 resource "boundary_alias_target" "it-http-target-alias" {

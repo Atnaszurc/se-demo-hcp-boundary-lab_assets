@@ -1,7 +1,7 @@
 # Windows Target
 
 resource "aws_instance" "http-target" {
-  ami           = "ami-0f436e50b9fe7144f"
+  ami           = "ami-0f24c0a5554819d05"
   instance_type = "t3.small"
 
   key_name               = aws_key_pair.boundary_ec2_keys.key_name
@@ -23,7 +23,7 @@ module "http-sec-group" {
   vpc_id      = data.terraform_remote_state.boundary_demo_init.outputs.vpc_id
   ingress_with_source_security_group_id = [
     {
-      rule                     = "http-80-tcp"
+      rule                     = "https-443-tcp"
       source_security_group_id = module.worker-sec-group.security_group_id
     },
     {
